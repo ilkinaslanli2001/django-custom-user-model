@@ -3,7 +3,6 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import BaseUserManager
 
-
 class MyAccountManager(BaseUserManager):
 
     def create_user(self, username, email, password=None):
@@ -12,21 +11,20 @@ class MyAccountManager(BaseUserManager):
             return ValueError("Please enter you email")
         if not username:
             return ValueError("Please enter your username")
-
+      
         user = self.model(
                           email=self.normalize_email(email),
                           username=username
                         )
-
         user.set_password(password)
         user.save(using=self.db) # Adding data to the database
         return user
-
     def create_superuser(self, username, email, password):
         if not email:
             return ValueError("Please enter you email")
         if not username:
             return ValueError("Please enter your username")
+       
         user = self.create_user(
             email=self.normalize_email(email),
             username=username,
