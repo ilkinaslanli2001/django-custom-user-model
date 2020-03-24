@@ -3,5 +3,6 @@ __pycache__/
 *.pyc
 /* All database files */
 *.sqlite3
-
+migrations/*
+!migrations/__init__.py
 *.pyc
